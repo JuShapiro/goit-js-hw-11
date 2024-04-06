@@ -1,14 +1,16 @@
+import iziToast from 'izitoast';
+import 'izitoast/dist/css/iziToast.min.css';
+
 import SimpleLightbox from 'simplelightbox';
 import 'simplelightbox/dist/simple-lightbox.min.css';
 
 import { serviceGetImage } from './js/pixabay-api';
-import { createMarkup } from './js/render-functions';
+import { createImageMarkup } from './js/render-functions';
 
 const form = document.querySelector('.js-form');
-const list = document.querySelector('.js-list');
+const gallery = document.querySelector('.js-list');
 
 form.addEventListener('submit', handlerSearch);
-// list.addEventListener('click', handlerOpenModal)
 
 function handlerSearch(event) {
   event.preventDefault();
@@ -16,24 +18,28 @@ function handlerSearch(event) {
   const inputValue = event.currentTarget.elements.query.value
     .trim()
     .toLowerCase();
-
-    serviceGetImage(inputValue).then(data => {
-        if (!data.hits.length) {
-            list.innerHTML = ''
-            alert('no image')
-            return
+  //spiner.on
+  serviceGetImage(inputValue)
+    .then(data => {
+      if (!data.hits.length) {
+        gallery.innerHTML = '';
+        iziToast.error({
+          message:
+            'Sorry, there are no images matching your search query. Please try again!',
+          position: 'topRight',
+          backgroundColor: 'red',
+          messageColor: '#fff',
+        });
+        return;
       }
-    list.innerHTML = createMarkup(data.hits);
-    new SimpleLightbox('.gallery a');
-    });
-    event.currentTarget.reset();
+      gallery.innerHTML = createImageMarkup(data.hits);
+      const galleryList = new SimpleLightbox('.gallery a', {
+        captionDelay: 250,
+      });
+      galleryList.refresh();
+    })
+    .catch(err => console.log(err));
+  // .finally(() => )//spiner.off)
+
+  event.currentTarget.reset();
 }
-
-// function handlerOpenModal(event) {
-//     if (event.target === event.currentTarget) {
-//         return;
-//     }
-//     const currentCard = event.target.closest('li');
-//     const largeImageURL = currentCard.dataset.source;
-
-// }

@@ -1,4 +1,4 @@
-function serviceGetImage(query) {
+function serviceGetImage(query){
 
   const BASE_URL = 'https://pixabay.com/api/';
   const API_KEY = '43229281-da9ce3bce46360bd3cf91ebb8';
