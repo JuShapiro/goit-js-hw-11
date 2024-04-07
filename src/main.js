@@ -37,7 +37,7 @@ function handlerSearch(event) {
         new SimpleLightbox('.gallery a', {
           captionDelay: 250,
         });
-        galleryList.refresh();
+        gallery.refresh();
       })
       .catch(err => console.log(err))
       .finally(() => loader.style.display = 'none');
