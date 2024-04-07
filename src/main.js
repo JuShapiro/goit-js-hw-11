@@ -39,7 +39,7 @@ function handlerSearch(event) {
         });
         gallery.refresh();
       })
-      .catch(err => console.log(err))
+      .catch(err => err.json())
       .finally(() => loader.style.display = 'none');
 
     event.currentTarget.reset();
