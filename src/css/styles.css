@@ -38,6 +38,11 @@ body {
   border: 1px solid black;
 }
 
+.form-input:active,
+.form-input:focus {
+  border: none;
+}
+
 .form-btn {
   width: 91px;
   height: 40px;
