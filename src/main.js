@@ -34,12 +34,12 @@ function handlerSearch(event) {
           return;
         }
         gallery.innerHTML = createImageMarkup(data.hits);
-        const galleryList = new SimpleLightbox('.gallery a', {
+        new SimpleLightbox('.gallery a', {
           captionDelay: 250,
         });
-        galleryList.refresh();
+        gallery.refresh();
       })
-      .catch(err => console.log(err))
+      .catch(err => err.statusText)
       .finally(() => loader.style.display = 'none');
 
     event.currentTarget.reset();
