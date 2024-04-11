@@ -93,9 +93,6 @@ img {
   height: 48px;
   justify-content: space-around;
   align-items: center;
-  border-bottom: 1px solid #808080;
-  border-left: 1px solid #808080;
-  border-right: 1px solid #808080;
   background-color: #fff;
 }
 
@@ -115,10 +112,15 @@ img {
   color: #2e2f42;
 }
 
+.preloader.is-hidden{
+  display: none;
+}
 .loader {
   width: 48px;
   height: 48px;
-  display: inline-block;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   position: relative;
 }
 .loader::after,
