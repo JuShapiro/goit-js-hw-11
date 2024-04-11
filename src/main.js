@@ -40,7 +40,7 @@ function handlerSearch(event) {
         gallery.refresh();
       })
       .catch(err => err.statusText)
-      .finally(() => loader.classList.add('is-hidden'));
+      .finally(() => loader.style.display = 'none');
 
     event.currentTarget.reset();
 }
