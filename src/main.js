@@ -19,7 +19,7 @@ function handlerSearch(event) {
     const inputValue = event.currentTarget.elements.query.value
       .trim()
       .toLowerCase();
-    loader.style.display = 'block';
+    loader.classList.remove('is-hidden');
     serviceGetImage(inputValue)
       .then(data => {
         if (!data.hits.length) {
@@ -40,7 +40,7 @@ function handlerSearch(event) {
         gallery.refresh();
       })
       .catch(err => err.statusText)
-      .finally(() => loader.style.display = 'none');
+      .finally(() => loader.classList.add('is-hidden');
 
     event.currentTarget.reset();
 }
