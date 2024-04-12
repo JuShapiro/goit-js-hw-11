@@ -10,7 +10,7 @@ function createImageMarkup(arr) {
         comments,
         downloads,
       }) =>
-        `<li classs="list-item">
+        `<li class="list-item">
       <a class="item-link" href="${largeImageURL}">
       <img src="${webformatURL}" alt="${tags}"></a>
       <div class="img-desc">

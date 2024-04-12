@@ -16,6 +16,7 @@ form.addEventListener('submit', handlerSearch);
 function handlerSearch(event) {
     event.preventDefault();
     
+  gallery.innerHTML = '';
     const inputValue = event.currentTarget.elements.query.value
       .trim()
       .toLowerCase();
@@ -23,7 +24,6 @@ function handlerSearch(event) {
     serviceGetImage(inputValue)
       .then(data => {
         if (!data.hits.length) {
-          gallery.innerHTML = '';
           iziToast.error({
             message:
               'Sorry, there are no images matching your search query. Please try again!',
